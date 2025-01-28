@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matching Results</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #0066FF;
+            --deep-blue: #0A1F44;
+            --soft-white: #F9FAFB;
+            --pure-white: #FFFFFF;
+            --dark-charcoal: #1A1A1A;
+            --gradient-blue: linear-gradient(135deg, var(--deep-blue) 0%, var(--primary-blue) 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: var(--soft-white);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-charcoal);
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: var(--pure-white);
+            padding: 2rem;
+            border-radius: 24px;
+            box-shadow: 0 12px 40px rgba(10, 31, 68, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: var(--deep-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .result-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 2rem;
+        }
+
+        .result-item {
+            background: var(--soft-white);
+            border: 1px solid #E3E8EF;
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 10px rgba(10, 31, 68, 0.05);
+            text-align: left;
+        }
+
+        .result-item h2 {
+            font-size: 1.25rem;
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .result-item p {
+            font-size: 0.9rem;
+            color: var(--dark-charcoal);
+            margin: 0.25rem 0;
+        }
+
+        .no-results {
+            font-size: 1rem;
+            color: var(--dark-charcoal);
+            margin-bottom: 2rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--gradient-blue);
+            color: var(--pure-white);
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .back-link:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 24px rgba(0, 102, 255, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Matching Teachers</h1>
+        {% if matches %}
+            <ul class="result-list">
+                {% for match in matches %}
+                    <li class="result-item">
+                        <h2>{{ match.teacher.name }}</h2>
+                        <p><strong>Specialties:</strong> {{ match.teacher.specialties }}</p>
+                        <p><strong>Score:</strong> {{ match.score }}</p>
+                        <p><strong>Rating:</strong> {{ match.teacher.rating }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="no-results">No matching teachers found. Please refine your search criteria.</p>
+        {% endif %}
+        <a href="/" class="back-link">Back to Welcome Page</a>
+    </div>
+</body>
+</html>

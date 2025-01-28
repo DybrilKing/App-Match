@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Welcome to Match Schola</title>
+    <style>
+        :root {
+            --primary-blue: #0066FF;
+            --deep-blue: #0A1F44;
+            --soft-white: #F9FAFB;
+            --pure-white: #FFFFFF;
+            --dark-charcoal: #1A1A1A;
+            --gradient-blue: linear-gradient(135deg, var(--deep-blue) 0%, var(--primary-blue) 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: var(--soft-white);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: var(--gradient-blue);
+            padding: 6rem 2rem 8rem;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            color: var(--pure-white);
+        }
+
+        .decorative-blob {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: linear-gradient(150deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.03) 100%);
+            border-radius: 40% 60% 60% 40% / 70% 30% 70% 30%;
+        }
+
+        .decorative-blob.top-right {
+            top: -300px;
+            right: -200px;
+            transform: rotate(45deg);
+        }
+
+        .decorative-blob.bottom-left {
+            bottom: -300px;
+            left: -200px;
+            transform: rotate(-20deg);
+        }
+
+        h1 {
+            font-size: 2.75rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            position: relative;
+            z-index: 2;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-weight: 300;
+            position: relative;
+            z-index: 2;
+        }
+
+        .welcome-container {
+            max-width: 800px;
+            margin: -4rem auto 2rem;
+            padding: 3rem;
+            background: var(--pure-white);
+            border-radius: 24px;
+            box-shadow: 0 12px 40px rgba(10, 31, 68, 0.1);
+            text-align: center;
+            position: relative;
+            z-index: 3;
+        }
+
+        .welcome-container h2 {
+            color: var(--deep-blue);
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .welcome-container p {
+            color: var(--dark-charcoal);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn-group {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 1.25rem 2rem;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: block;
+            background: var(--gradient-blue);
+            color: var(--pure-white);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 102, 255, 0.2);
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 2rem;
+            background: var(--deep-blue);
+            color: var(--pure-white);
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 4rem 1.5rem 6rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .welcome-container {
+                padding: 2rem;
+                margin: -4rem 1.5rem 2rem;
+            }
+
+            .btn-group {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="decorative-blob top-right"></div>
+        <div class="decorative-blob bottom-left"></div>
+        <h1>Welcome to Match Schola</h1>
+        <p>Smart connections between curious minds and expert educators</p>
+    </header>
+
+    <div class="welcome-container">
+        <h2>Start Your Journey</h2>
+        <p>Select your role to begin your personalized educational experience</p>
+
+        <div class="btn-group">
+            <a href="{{ url_for('index') }}" class="btn">I am a Student</a>
+            <a href="{{ url_for('add_teacher') }}" class="btn">I am a Teacher</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Match Schola. All rights reserved.</p>
+    </footer>
+</body>
+</html>
